@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://btw444c587rxp"]
+
+[ext_resource type="Script" path="res://game_manager.gd" id="1_rheb6"]
+[ext_resource type="Script" path="res://menus/main_menu_nav.gd" id="2_27iob"]
+[ext_resource type="PackedScene" uid="uid://b6jtdck1r87pj" path="res://menus/pause/PauseMenu.tscn" id="2_yildp"]
+[ext_resource type="Script" path="res://globals/world.gd" id="4_sueft"]
+
+[node name="GameManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_rheb6")
+
+[node name="MainMenu" type="Control" parent="." node_paths=PackedStringArray("game_manager")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-656, 32)
+script = ExtResource("2_27iob")
+game_manager = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("2_yildp")]
+process_mode = 2
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.511
+anchor_right = 0.5
+anchor_bottom = 0.511
+offset_top = -0.128021
+offset_bottom = -0.128021
+grow_vertical = 0
+size_flags_horizontal = 4
+game_manager = NodePath("../..")
+
+[node name="World" type="Node2D" parent="."]
+script = ExtResource("4_sueft")

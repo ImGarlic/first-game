@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://de56r3yc1t26j"]
+
+[ext_resource type="PackedScene" uid="uid://bwfmtahrrcbt7" path="res://entities/player/Player.tscn" id="1_i5trq"]
+[ext_resource type="Script" path="res://scenes/level0/overworld.gd" id="1_oxrxa"]
+[ext_resource type="PackedScene" uid="uid://q7td0f30w7d7" path="res://entities/npc/NPC.tscn" id="3_ppah2"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ixruh"]
+b = Vector2(0, 656)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qqw8q"]
+a = Vector2(0, 640)
+b = Vector2(0, 0)
+
+[node name="Overworld" type="Area2D"]
+process_mode = 1
+script = ExtResource("1_oxrxa")
+
+[node name="Player" parent="." instance=ExtResource("1_i5trq")]
+position = Vector2(80, 128)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1152, 0)
+collision_layer = 2
+collision_mask = 5
+
+[node name="wall_right" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_ixruh")
+one_way_collision_margin = 0.0
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="wall_left" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("SegmentShape2D_qqw8q")
+
+[node name="NPC" parent="." instance=ExtResource("3_ppah2")]
+position = Vector2(96, 240)
+target_list = Array[Vector2]([Vector2(600, 600), Vector2(600, 100), Vector2(100, 100)])
+
+[node name="NPC2" parent="." instance=ExtResource("3_ppah2")]
+position = Vector2(696, 144)
+target_list = Array[Vector2]([Vector2(800, 100), Vector2(100, 800)])
+
+[node name="NPC3" parent="." instance=ExtResource("3_ppah2")]
+target_list = Array[Vector2]([Vector2(0, 0)])

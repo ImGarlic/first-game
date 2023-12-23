@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://50k4im68v0hu"]
+
+[ext_resource type="Script" path="res://menus/MainMenu.gd" id="1_m2eta"]
+[ext_resource type="Theme" uid="uid://c0mo5w6awjj34" path="res://ui/themes/menu-button.theme" id="2_gyvfy"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_m2eta")
+
+[node name="Load" type="Node2D" parent="."]
+
+[node name="NewGame" type="Button" parent="." groups=["menu"]]
+offset_left = 448.0
+offset_top = 208.0
+offset_right = 704.0
+offset_bottom = 272.0
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../LoadGame")
+theme = ExtResource("2_gyvfy")
+text = "New Game"
+
+[node name="LoadGame" type="Button" parent="." groups=["menu"]]
+offset_left = 448.0
+offset_top = 288.0
+offset_right = 704.0
+offset_bottom = 352.0
+focus_neighbor_top = NodePath("../NewGame")
+focus_neighbor_bottom = NodePath("../Quit")
+theme = ExtResource("2_gyvfy")
+text = "Load Game"
+
+[node name="Quit" type="Button" parent="." groups=["menu"]]
+offset_left = 448.0
+offset_top = 368.0
+offset_right = 704.0
+offset_bottom = 432.0
+focus_neighbor_top = NodePath("../LoadGame")
+focus_neighbor_bottom = NodePath("../NewGame")
+theme = ExtResource("2_gyvfy")
+text = "Quit
+"
+
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

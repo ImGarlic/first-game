@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://dwaci2fb1dud8"
+path="res://.godot/imported/talk.dialogue-f8f8c795f347d8827456c118ce9de38d.tres"
+
+[deps]
+
+source_file="res://entities/npc/character_first_fella/talk.dialogue"
+dest_files=["res://.godot/imported/talk.dialogue-f8f8c795f347d8827456c118ce9de38d.tres"]
+
+[params]
+
+defaults=true

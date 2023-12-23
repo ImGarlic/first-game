@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8wfix3vtorkq"]
+
+[ext_resource type="Script" path="res://menus/main/options_menu.gd" id="1_t53qh"]
+[ext_resource type="Theme" uid="uid://c0mo5w6awjj34" path="res://ui/themes/menu-button.theme" id="2_5gs8f"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t53qh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -25.0
+offset_right = 104.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5gs8f")
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

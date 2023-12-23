@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://de56r3yc1t26j"]
+
+[ext_resource type="PackedScene" uid="uid://bwfmtahrrcbt7" path="res://entities/player/Player.tscn" id="1_i5trq"]
+[ext_resource type="Script" path="res://scenes/level0/overworld.gd" id="1_oxrxa"]
+[ext_resource type="PackedScene" uid="uid://q7td0f30w7d7" path="res://entities/npc/NPC.tscn" id="3_ppah2"]
+[ext_resource type="Resource" uid="uid://c47yi58w6rgjq" path="res://entities/npc/character_first_fella/first_fella.tres" id="4_ecy0a"]
+[ext_resource type="Resource" uid="uid://cx6cvt2huyhgh" path="res://entities/npc/character_second_fella/second_fella.tres" id="5_1mc46"]
+
+[sub_resource type="Environment" id="Environment_60nlw"]
+background_mode = 3
+glow_levels/1 = 1.26
+glow_levels/2 = 0.36
+glow_levels/3 = 2.98
+glow_levels/5 = 1.18
+glow_levels/6 = 1.74
+glow_levels/7 = 2.16
+glow_intensity = 1.56
+glow_strength = 1.48
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ixruh"]
+b = Vector2(0, 656)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qqw8q"]
+a = Vector2(0, 640)
+b = Vector2(0, 0)
+
+[node name="Overworld" type="Area2D"]
+process_mode = 1
+script = ExtResource("1_oxrxa")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_60nlw")
+
+[node name="Player" parent="." instance=ExtResource("1_i5trq")]
+position = Vector2(232, 216)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1152, 0)
+collision_layer = 2
+collision_mask = 5
+
+[node name="wall_right" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_ixruh")
+one_way_collision_margin = 0.0
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="wall_left" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("SegmentShape2D_qqw8q")
+
+[node name="NPC" parent="." instance=ExtResource("3_ppah2")]
+position = Vector2(96, 240)
+resources = ExtResource("4_ecy0a")
+
+[node name="NPC2" parent="." instance=ExtResource("3_ppah2")]
+position = Vector2(368, 184)
+resources = ExtResource("5_1mc46")

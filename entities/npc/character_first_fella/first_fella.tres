@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NPCResource" load_steps=3 format=3 uid="uid://c47yi58w6rgjq"]
+
+[ext_resource type="Script" path="res://entities/npc/resources/npc_overworld_resource.gd" id="1_pysgs"]
+[ext_resource type="SpriteFrames" uid="uid://dr61pw02acu0j" path="res://entities/npc/character_first_fella/first_fella_animations.tres" id="2_ugbud"]
+
+[resource]
+script = ExtResource("1_pysgs")
+move_speed = 100
+path_coordinates = Array[Vector2]([Vector2(10, 10), Vector2(100, 100), Vector2(800, 500)])
+idle_time = 0.001
+sprite_frames = ExtResource("2_ugbud")
