@@ -5,7 +5,6 @@
 
 [resource]
 script = ExtResource("1_pysgs")
-move_speed = 100
-path_coordinates = Array[Vector2]([Vector2(10, 10), Vector2(100, 100), Vector2(800, 500)])
-idle_time = 0.001
+move_speed = 200
+idle_time = 1.0
 sprite_frames = ExtResource("2_ugbud")

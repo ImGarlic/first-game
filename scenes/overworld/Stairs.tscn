@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn2ngc8fxmk88"]
+
+[ext_resource type="Script" path="res://globals/height_manager.gd" id="1_372kx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rulb"]
+size = Vector2(48, 3)
+
+[node name="Stairs" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_372kx")
+upper_level_z_index = 1
+upper_collision_layer = 2
+lower_collision_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0rulb")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

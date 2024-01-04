@@ -1,16 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://1rxnddppbmny"]
+[gd_scene load_steps=11 format=3 uid="uid://q7td0f30w7d7"]
 
-[ext_resource type="SpriteFrames" uid="uid://dr61pw02acu0j" path="res://entities/npc/character_first_fella/first_fella_animations.tres" id="1_kwtmh"]
-[ext_resource type="Script" path="res://entities/npc/npc.gd" id="2_0vrgl"]
-[ext_resource type="Script" path="res://globals/states/state_machine.gd" id="2_bit13"]
-[ext_resource type="Script" path="res://entities/npc/states/npc_move.gd" id="3_iw30m"]
-[ext_resource type="Script" path="res://entities/npc/states/npc_idle.gd" id="4_a2m67"]
+[ext_resource type="Script" path="res://entities/npc/npc.gd" id="1_2ilwj"]
+[ext_resource type="SpriteFrames" uid="uid://dr61pw02acu0j" path="res://entities/npc/character_first_fella/first_fella_animations.tres" id="2_y07hq"]
+[ext_resource type="Script" path="res://globals/states/state_machine.gd" id="12_61g6a"]
+[ext_resource type="Script" path="res://entities/npc/states/npc_move.gd" id="13_e6hhg"]
+[ext_resource type="Script" path="res://entities/npc/states/npc_movement_component.gd" id="13_qcxui"]
+[ext_resource type="Script" path="res://entities/npc/states/npc_idle.gd" id="14_8tvn8"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kmq10"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ka3vq"]
 radius = 8.0
 height = 16.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_knmq6"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sv6xx"]
 radius = 24.0
 height = 48.0
 
@@ -36,42 +37,46 @@ _data = {
 }
 
 [node name="NPC" type="CharacterBody2D"]
-motion_mode = 1
-script = ExtResource("2_0vrgl")
+collision_layer = 6
+collision_mask = 2
+script = ExtResource("1_2ilwj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
-sprite_frames = ExtResource("1_kwtmh")
+sprite_frames = ExtResource("2_y07hq")
 animation = &"idle_DOWN"
 
 [node name="PlayerShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
-shape = SubResource("CapsuleShape2D_kmq10")
+shape = SubResource("CapsuleShape2D_ka3vq")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
-script = ExtResource("2_bit13")
-starting_state = NodePath("idle")
+script = ExtResource("12_61g6a")
+starting_state = NodePath("move")
 
-[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "character")]
-script = ExtResource("3_iw30m")
+[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("13_e6hhg")
 idle_state = NodePath("../idle")
-character = NodePath("../..")
 animation_name = "run"
 
 [node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("move_state")]
-script = ExtResource("4_a2m67")
+script = ExtResource("14_8tvn8")
 move_state = NodePath("../move")
 animation_name = "idle"
 
 [node name="Timer" type="Timer" parent="state_machine/idle"]
 
+[node name="move_component" type="Node" parent="." node_paths=PackedStringArray("parent")]
+script = ExtResource("13_qcxui")
+parent = NodePath("..")
+
 [node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource("CapsuleShape2D_knmq6")
+shape = SubResource("CapsuleShape2D_sv6xx")
 
 [node name="TargetMarker" type="Polygon2D" parent="."]
-z_index = 99
 y_sort_enabled = true
 position = Vector2(-3.8147e-06, -24)
 scale = Vector2(0.0833333, 0.2)

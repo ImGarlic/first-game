@@ -36,4 +36,7 @@ size_flags_horizontal = 4
 game_manager = NodePath("../..")
 
 [node name="World" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("4_sueft")
+
+[node name="Battle" type="Node2D" parent="."]
