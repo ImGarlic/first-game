@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://cu3wa3fqwxekl"]
+[gd_scene load_steps=2 format=3 uid="uid://cu3wa3fqwxekl"]
+
+[ext_resource type="SpriteFrames" uid="uid://cwxqkhe4ssshs" path="res://entities/battle/unit/player_battle.tres" id="1_bk4kc"]
 
 [node name="BattleUnit" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_bk4kc")
+animation = &"idle"
+frame_progress = 0.443039

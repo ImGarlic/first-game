@@ -54,38 +54,37 @@ y_sort_enabled = true
 [node name="NPC" parent="YSort" node_paths=PackedStringArray("path") instance=ExtResource("6_uj1cl")]
 position = Vector2(-50, 100)
 resources = ExtResource("5_rmiab")
-path = NodePath("../../NPCPath1")
+path = NodePath("../../NPCPath")
 
 [node name="NPC2" parent="YSort" node_paths=PackedStringArray("path") instance=ExtResource("6_uj1cl")]
 position = Vector2(190, 64)
 rotation = 0.011538
-scale = Vector2(1, 1)
 resources = ExtResource("6_1t5u4")
-path = NodePath("../../Path2D")
+path = NodePath("../../NPC2Path")
 
 [node name="BattleTrigger" parent="." instance=ExtResource("6_sv2sy")]
 position = Vector2(99, 5)
 
-[node name="NPCPath1" type="Path2D" parent="."]
+[node name="NPCPath" type="Path2D" parent="."]
 position = Vector2(-50, 100)
 curve = SubResource("Curve2D_41mux")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="NPCPath1"]
+[node name="PathFollow2D" type="PathFollow2D" parent="NPCPath"]
 rotates = false
 cubic_interp = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="NPCPath1/PathFollow2D"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="NPCPath/PathFollow2D"]
 remote_path = NodePath("../../../YSort/NPC")
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="NPC2Path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_mxul6")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="NPC2Path"]
 position = Vector2(190, 64)
 rotation = -1.55926
 rotates = false
 cubic_interp = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="NPC2Path/PathFollow2D"]
 remote_path = NodePath("../../../YSort/NPC2")
 update_rotation = false

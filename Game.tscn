@@ -3,7 +3,13 @@
 [ext_resource type="Script" path="res://game_manager.gd" id="1_rheb6"]
 [ext_resource type="Script" path="res://menus/main_menu_nav.gd" id="2_27iob"]
 [ext_resource type="PackedScene" uid="uid://b6jtdck1r87pj" path="res://menus/pause/PauseMenu.tscn" id="2_yildp"]
-[ext_resource type="Script" path="res://globals/world.gd" id="4_sueft"]
+
+[sub_resource type="GDScript" id="GDScript_2vj1x"]
+script/source = "extends Node2D
+
+@export var game_manager : GameManager
+
+"
 
 [node name="GameManager" type="Node"]
 process_mode = 3
@@ -37,6 +43,6 @@ game_manager = NodePath("../..")
 
 [node name="World" type="Node2D" parent="."]
 process_mode = 1
-script = ExtResource("4_sueft")
+script = SubResource("GDScript_2vj1x")
 
 [node name="Battle" type="Node2D" parent="."]

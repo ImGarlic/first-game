@@ -1,0 +1,63 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cwxqkhe4ssshs"]
+
+[ext_resource type="Texture2D" uid="uid://cbrdhr7dq004j" path="res://entities/battle/unit/orpgquest base.png" id="1_8rqti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4357v"]
+atlas = ExtResource("1_8rqti")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us4dg"]
+atlas = ExtResource("1_8rqti")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa5pd"]
+atlas = ExtResource("1_8rqti")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg014"]
+atlas = ExtResource("1_8rqti")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fusb1"]
+atlas = ExtResource("1_8rqti")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahoqt"]
+atlas = ExtResource("1_8rqti")
+region = Rect2(64, 16, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4357v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us4dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa5pd")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg014")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fusb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahoqt")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]

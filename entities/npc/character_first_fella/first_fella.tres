@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_pysgs")
-move_speed = 200
+move_speed = 100
 idle_time = 1.0
 sprite_frames = ExtResource("2_ugbud")
